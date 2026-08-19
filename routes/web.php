@@ -10,6 +10,7 @@ Route::get('/', [UtamaController::class, 'index']);
 //     return view('welcome');
 // });
 
+//ini adalah komentar
 Route::get('/horeee-saya-bisa', function (){
     return 'Ini adalah halaman saya';
 });
