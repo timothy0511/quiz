@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\UtamaController;
+use App\Http\Controllers\KategoriController;
+
 Route::get('/', [UtamaController::class, 'index']);
 
-
+Route::get('/daftar-kategori', [KategoriController::class, 'tampil']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });
