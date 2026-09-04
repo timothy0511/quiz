@@ -11,7 +11,7 @@
         <tr>
             <th> Nama </th>
             <th> Deskripsi </th>
-            <th> Aksi</th>
+            <th colspan = "2"> Aksi</th>
         </tr>
         @foreach ($kategoris as $kategori) 
             <tr>
@@ -23,6 +23,9 @@
                         @method('DELETE')
                         <input type = "submit" value = "Hapus"/> 
                     </form>
+                </td>
+                <td>
+                    <a href="{{ route('kategori.ubah', $kategori) }}">Ubah</a>
                 </td>
             </tr>
         @endforeach

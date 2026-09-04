@@ -13,7 +13,10 @@ Route::get('/daftar-barang', [BarangController::class, 'tampil']);
 Route::get('/tambah-barang', [BarangController::class, 'create']);
 Route::post('/simpan-barang', [BarangController::class, 'simpan']);
 Route::delete('/hapus-kategori/{kategori}', [KategoriController::class, 'hapus'])->name('kategori.hapus');
-//ini adalah komentar
+Route::get('/ubah-kategori/{kategori}', [KategoriController::class, 'ubah'])->name('kategori.ubah');
+Route::put('/update-kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update');
+
+
 Route::get('/horeee-saya-bisa', function (){
     return 'Ini adalah halaman saya';
 });
