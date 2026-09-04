@@ -34,4 +34,10 @@ class KategoriController extends Controller
 
         return redirect('/daftar-kategori');
     }
+
+    public function hapus(Kategori $kategori) {
+        $kategori->delete();
+        return redirect('/daftar-kategori');
+    }
+
 }
