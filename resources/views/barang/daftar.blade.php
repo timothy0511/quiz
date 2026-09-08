@@ -12,6 +12,7 @@
             <th>Nama Barang</th>
             <th>Harga</th>
             <th>Stok</th>
+            <th colspan="2">Aksi</th>
         </tr>
         
         <!-- Lakukan perulangan untuk setiap data barang -->
@@ -20,6 +21,16 @@
             <td>{{ $barang->nama }}</td>
             <td>Rp {{ number_format($barang->harga, 0, ',', '.') }}</td>
             <td>{{ $barang->stok }}</td>
+            <td> 
+                <form method = "POST" action = "{{ route('barang.hapus', $barang) }}">
+                    @csrf
+                    @method('DELETE')
+                    <input type = "submit" value = "Hapus"/> 
+                </form>
+            </td>
+            <td>
+                <a href="{{ route('barang.ubah', $barang) }}">Ubah</a>
+            </td>
         </tr>
         @endforeach
         

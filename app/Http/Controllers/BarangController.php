@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; // <-- Pastikan ini ada (bawaan)
 use Illuminate\Support\Facades\DB;
+use App\Models\Barang;
 
 class BarangController extends Controller
 {
     public function tampil()
     {
-        $barangs = DB::table('barangs')->get();
+        $barangs = Barang::All();
         return view('barang.daftar', ['barangs' => $barangs]);
     }
 
@@ -18,6 +19,11 @@ class BarangController extends Controller
         $kategoris = DB::table('kategoris')->get();
         
         return view('barang.create', ['kategoris' => $kategoris]);
+    }
+
+    public function hapus(Barang $barang) {
+        $barang->delete();
+        return redirect('/daftar-barang');
     }
 
     public function simpan(Request $request)
@@ -30,7 +36,23 @@ class BarangController extends Controller
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+        
 
+        return redirect('/daftar-barang');
+    }
+    public function ubah(Barang $barang) {
+        $kategoris = DB::table('kategoris')->get();
+        return view('barang.ubah', ['barang' => $barang, 'kategoris' => $kategoris]);
+    }
+
+     public function update(Request $request, Barang $barang) {
+        
+        $barang->nama = $request->get('nama');
+        $barang->harga = $request->get('harga');
+        $barang->stok = $request->get('stok');
+        $barang->kategori_id = $request->get('kategori_id');
+        $barang->save();
+        
         return redirect('/daftar-barang');
     }
 }

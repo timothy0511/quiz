@@ -15,6 +15,9 @@ Route::post('/simpan-barang', [BarangController::class, 'simpan']);
 Route::delete('/hapus-kategori/{kategori}', [KategoriController::class, 'hapus'])->name('kategori.hapus');
 Route::get('/ubah-kategori/{kategori}', [KategoriController::class, 'ubah'])->name('kategori.ubah');
 Route::put('/update-kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::delete('/hapus-barang/{barang}', [BarangController::class, 'hapus'])->name('barang.hapus');
+Route::get('/ubah-barang/{barang}', [BarangController::class, 'ubah'])->name('barang.ubah');
+Route::put('/update-barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
 
 
 Route::get('/horeee-saya-bisa', function (){
