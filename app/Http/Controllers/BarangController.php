@@ -22,8 +22,17 @@ class BarangController extends Controller
     }
 
     public function hapus(Barang $barang) {
-        $barang->delete();
-        return redirect('/daftar-barang');
+        try {
+            $barang->delete();
+
+            return redirect('/daftar-barang')
+                ->with('success', 'Barang berhasil dihapus.');
+            
+        } catch (\Exception $e) {
+
+            return redirect('/daftar-barang')
+                ->with('error', 'Barang gagal dihapus.');
+        }
     }
 
     public function simpan(Request $request)
@@ -45,14 +54,22 @@ class BarangController extends Controller
         return view('barang.ubah', ['barang' => $barang, 'kategoris' => $kategoris]);
     }
 
-     public function update(Request $request, Barang $barang) {
-        
-        $barang->nama = $request->get('nama');
-        $barang->harga = $request->get('harga');
-        $barang->stok = $request->get('stok');
-        $barang->kategori_id = $request->get('kategori_id');
-        $barang->save();
-        
-        return redirect('/daftar-barang');
+     public function update(Request $request, Barang $barang) {    
+        try {
+            $barang->nama = $request->get('nama');
+            $barang->harga = $request->get('harga');
+            $barang->stok = $request->get('stok');
+            $barang->kategori_id = $request->get('kategori_id');
+
+            $barang->save();
+
+            return redirect('/daftar-barang')
+                ->with('success', 'Barang berhasil diperbarui.');
+
+        } catch (\Exception $e) {
+
+            return redirect('/daftar-barang')
+                ->with('error', 'Barang gagal diperbarui.');
+        }
     }
 }

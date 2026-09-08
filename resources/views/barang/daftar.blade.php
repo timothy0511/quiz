@@ -7,12 +7,22 @@
 </head>
 <body>
     <h1>Daftar Barang</h1>
+    @if(session('success'))
+        <p style="color: green;">
+            {{ session('success') }}
+        </p>
+    @endif
+
+    @if(session('error'))
+    <p style="color: red;">
+        {{ session('error') }}
+    </p>
+@endif
     <table border="1">
         <tr>
             <th>Nama Barang</th>
             <th>Harga</th>
             <th>Stok</th>
-            <th colspan="2">Aksi</th>
         </tr>
         
         <!-- Lakukan perulangan untuk setiap data barang -->

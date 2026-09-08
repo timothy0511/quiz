@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1> Daftar Kategori</h1>
+    @if(session('success'))
+        <p style="color: green;">
+            {{ session('success') }}
+        </p>
+    @endif
+
+    @if(session('error'))
+        <p style="color: red;">
+            {{ session('error') }}
+        </p>
+    @endif
     <table border="1">
         <tr>
             <th> Nama </th>

@@ -36,8 +36,12 @@ class KategoriController extends Controller
     }
 
     public function hapus(Kategori $kategori) {
-        $kategori->delete();
-        return redirect('/daftar-kategori');
+        try {
+            $kategori->delete();
+            return redirect('/daftar-kategori')->with('success', 'Kategori berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect('/daftar-kategori')->with('error', 'Kategori gagal dihapus.');
+        }
     }
 
     public function ubah(Kategori $kategori) {
@@ -45,12 +49,15 @@ class KategoriController extends Controller
     }
 
      public function update(Request $request, Kategori $kategori) {
-        
-        $kategori->nama = $request->get('nama');
-        $kategori->deskripsi = $request->get('deskripsi');
-        $kategori->save();
-        
-        return redirect('/daftar-kategori');
+        try {
+            $kategori->nama = $request->get('nama');
+            $kategori->deskripsi = $request->get('deskripsi');
+            $kategori->save();
+
+            return redirect('/daftar-kategori')->with('success', 'Kategori berhasil diperbarui.');
+        } catch (\Exception $e) {
+            return redirect('/daftar-kategori')->with('error', 'Kategori gagal diperbarui.');
+        }
     }
 
 }
