@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pegawais', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 100);
-            $table->string('jabatan', 100);
+            $table->enum('jabatan', ['Admin', 'Owner', 'Gudang']);
             $table->string('nomor_hp', 15);
             $table->string('email', 100);
             $table->string('alamat', 255);

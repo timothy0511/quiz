@@ -18,6 +18,9 @@
         {{ session('error') }}
     </p>
 @endif
+    <a href="{{ url('tambah-barang') }}">
+        [TAMBAH BARANG]
+    </a>
     <table border="1">
         <tr>
             <th>Nama Barang</th>

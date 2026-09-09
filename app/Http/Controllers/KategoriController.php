@@ -27,8 +27,20 @@ class KategoriController extends Controller
         // ]);
 
         // return redirect('/daftar-kategori');
-        $kategori = new Kategori;
-        $kategori->nama = $request->get('nama');
+        $request->validate([
+            'nama' => [
+                'required',
+                'regex:/^[a-zA-Z\s]+$/' // ketentuan untuk tidak bisa simpan selain huruf
+            ],
+            'deskripsi' => 'required'
+        ], [
+            'nama.required' => 'Nama kategori wajib diisi.',
+            'nama.regex' => 'Nama kategori tidak boleh mengandung angka.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.'
+        ]);
+        
+    $kategori = new Kategori;
+    $kategori->nama = $request->get('nama');
         $kategori->deskripsi = $request->get('deskripsi');
         $kategori->save();
 

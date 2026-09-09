@@ -18,7 +18,9 @@ Route::put('/update-kategori/{kategori}', [KategoriController::class, 'update'])
 Route::delete('/hapus-barang/{barang}', [BarangController::class, 'hapus'])->name('barang.hapus');
 Route::get('/ubah-barang/{barang}', [BarangController::class, 'ubah'])->name('barang.ubah');
 Route::put('/update-barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
-
+Route::get('/', function(){
+    return view('dashboard');
+});
 
 Route::get('/horeee-saya-bisa', function (){
     return 'Ini adalah halaman saya';
