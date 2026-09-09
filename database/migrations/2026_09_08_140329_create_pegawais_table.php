@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('jabatan', ['Admin', 'Owner', 'Gudang']);
             $table->string('nomor_hp', 15);
             $table->string('email', 100);
+            $table->string('password');
             $table->string('alamat', 255);
             $table->timestamps();
         });
