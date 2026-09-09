@@ -19,7 +19,11 @@ Route::delete('/hapus-barang/{barang}', [BarangController::class, 'hapus'])->nam
 Route::get('/ubah-barang/{barang}', [BarangController::class, 'ubah'])->name('barang.ubah');
 Route::put('/update-barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
 Route::get('/', function(){
-    return view('dashboard');
+    return view('/dashboard');
+});
+
+Route::get('/login', function(){
+    return view('/login');
 });
 
 Route::get('/horeee-saya-bisa', function (){
